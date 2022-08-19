@@ -1,0 +1,154 @@
+
+.nav-container{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    top: 0px;
+    left: 0;
+    flex-direction: column;
+    z-index: +1;
+    position: fixed;
+    box-shadow: 1px 2.5px 4px black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+
+.icons{
+    font-size:medium;
+    margin:10px;
+    cursor: pointer;
+
+}
+.icons:hover{
+    color: grey;
+}
+.icon-numbers{ 
+    position:absolute;
+    right:3px;
+    top:3px;
+    background-color:red;
+    padding:3px;
+    border-radius:50%;
+    width:11px;
+    height:13px;
+    font-size:12px;
+    text-align:center;
+    cursor: pointer;
+    color: white;
+}
+
+nav img {
+    width:40px;
+}
+nav{
+    flex:5;
+    background-color: rgb(228, 228, 228);;
+    padding: 10px 15px 0 15px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(29, 29, 29);
+}
+.nav-title{
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+}
+.portion{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.logo-text{
+    padding-left: 10px;
+    color: rgb(29, 29, 29);
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+.options{
+    display: flex;
+}
+
+.opt{
+    cursor: pointer;
+    margin: 10px 25px 10px 25px;
+}
+.profileIcon{
+    font-size: 30px;
+    margin:10px;
+    cursor: pointer;
+}
+
+.buttons{
+    display: flex;
+}
+.search{
+    margin: 10px;
+    height: 20px;
+    width: 100%;
+    border-radius: 20px;
+    border: 2px solid rgb(66, 66, 66);
+    padding: 5px;
+    text-align: center;
+
+}
+
+.nav2{
+    flex:3;
+    background-color: rgb(29, 29, 29);
+    padding: 0px 15px 0px 15px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 3px rgb(0, 0, 0);
+    color: rgb(228, 228, 228);;
+}
+.button{
+    margin: 9px 5px 0px 5px ;
+    margin-top: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.button:hover{
+    color: rgb(128, 128, 128);
+}
+.opt:hover{
+    color: rgb(128, 128, 128);
+}
+.searchIcon{
+    font-size: 30px;
+    margin-top:16px;
+    cursor: pointer;
+}
+.searchBar{
+    width: 25%;
+    display: flex;
+}
+@media only screen and (max-width: 600px) {
+ 
+.searchBar{
+    width: 40%;
+}
+.nav2{
+    display: none;
+}
+.logo-text{
+    font-size: 16px;
+    margin: 0%;
+}
+.nav{
+    padding-top: 0;
+}
+}
+@media only screen and (max-width: 900px) {
+ 
+    .searchBar{
+        width: 40%;
+    }
+    nav{
+        box-shadow: 2px 2px 5px black;
+    }
+    
+    
+    }
