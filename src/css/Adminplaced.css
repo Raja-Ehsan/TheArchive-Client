@@ -1,0 +1,74 @@
+.orders{
+    margin-top: 120px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.order-page-container{
+    padding: .1px;
+    height: 100%;
+    width: 100vw;
+    background-color: grey;
+}
+.orders-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.order-item{
+    cursor: pointer;
+    width: 800px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(230, 230, 230);
+    margin: 10px;
+    box-shadow: 4px 4px 10px rgb(26, 26, 26);
+    border: 2px solid rgb(26, 26, 26);
+}
+.order-item-allorders{
+    cursor: pointer;
+    width: 800px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(230, 230, 230);
+    margin: 10px;
+    box-shadow: 4px 4px 10px rgb(26, 26, 26);
+    border: 2px solid rgb(26, 26, 26);
+}
+.order-item>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+.order-item span{
+    color: rgb(0, 0, 158);
+    margin: 5px;
+}
+.order-item h1{
+    text-decoration: underline;
+}
+.order-item p{
+    color: rgb(62, 62, 62);
+}
+
+@media only screen and (max-width: 880px) {
+ .order-item{
+    width: 90%;
+    margin: 10px;
+ }
+ .order-item-allorders{
+    width: 90%;
+    margin: 10px;
+ }
+ .orders{
+    padding: 10px;
+    margin-top: 50px;
+ }
+    }
+    
+@media only screen and (max-width: 600px) {
+    
+.order-item>div{
+    flex-direction: column;
+}
+       }

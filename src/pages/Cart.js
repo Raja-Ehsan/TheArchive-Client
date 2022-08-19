@@ -4,6 +4,7 @@ import Footer from '../components/footer'
 import Heading from '../components/heading'
 import Nav from '../components/nav'
 import { Subscribe } from '../components/subscribe'
+import { CartCard } from '../components/cartCard'
 
 export const Cart = () => {
     return (
@@ -13,75 +14,10 @@ export const Cart = () => {
                 <Heading item='My Cart' />
                 <div className="cart-container">
                     <div className="cart-content">
-                        <div className="cart-item-content">
-                            <img className='cart-item-img' src={require('../images/book1.jpg')} alt="" />
-                            <div className="cart-item-info">
-                                <h2 className='title'>Harry Potter</h2>
-                                <h3 className='item-price'>Price:<span >16$</span></h3>
-                                <div className="horizontal">
-                                    <div>
-                                        <label htmlFor="counter">Quantity:</label>
-                                        <input type="number" min={'0'} />
-                                    </div>
-                                    <div>
-                                        <button> Remove </button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div className="cart-item-content">
-                            <img className='cart-item-img' src={require('../images/book2.jpg')} alt="" />
-                            <div className="cart-item-info">
-                                <h2 className='title'>Harry Potter</h2>
-                                <h3 className='item-price'>Price:<span >16$</span></h3>
-                                <div className="horizontal">
-                                    <div>
-                                        <label htmlFor="counter">Quantity:</label>
-                                        <input type="number" min={'0'} />
-                                    </div>
-                                    <div>
-                                        <button> Remove </button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div className="cart-item-content">
-                            <img className='cart-item-img' src={require('../images/book3.jpg')} alt="" />
-                            <div className="cart-item-info">
-                                <h2 className='title'>Harry Potter</h2>
-                                <h3 className='item-price'>Price:<span >16$</span></h3>
-                                <div className="horizontal">
-                                    <div>
-                                        <label htmlFor="counter">Quantity:</label>
-                                        <input type="number" min={'0'} />
-                                    </div>
-                                    <div>
-                                        <button> Remove </button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div className="cart-item-content">
-                            <img className='cart-item-img' src={require('../images/book4.jpg')} alt="" />
-                            <div className="cart-item-info">
-                                <h2 className='title'>Harry Potter</h2>
-                                <h3 className='item-price'>Price:<span >16$</span></h3>
-                                <div className="horizontal">
-                                    <div>
-                                        <label htmlFor="counter">Quantity:</label>
-                                        <input type="number" min={'0'} />
-                                    </div>
-                                    <div>
-                                        <button> Remove </button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        
+                       <CartCard/>
+                       <CartCard/>
+                       <CartCard/>
+                       <CartCard/>
                     </div>
                     <div className="pricing">
                         <div>

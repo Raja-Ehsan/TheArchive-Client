@@ -10,6 +10,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import { Checkout } from "./pages/Checkout";
 import { AdminHome } from "./pages/AdminHome";
+import { Adminplaced } from "./pages/Adminplaced";
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
         <Route path='/cart' exact element={<Cart/>}/>
         <Route path='/checkout' exact element={<Checkout/>}/>
         <Route path='/admin' exact element={<AdminHome/>}/>
+        <Route path='/admin/order/placed' exact element={<Adminplaced/>}/>
       </Routes>
     </>
   );
