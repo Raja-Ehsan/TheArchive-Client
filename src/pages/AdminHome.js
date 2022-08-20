@@ -6,7 +6,7 @@ import "../css/admin.css"
 export const AdminHome = () => {
     return (
         <div className='page-container'>
-            <Nav />
+            <Nav admin={true} />
             <div className="admin-dash">
                 <Heading item='Dashboard' />
                 <div className="dash-items">
