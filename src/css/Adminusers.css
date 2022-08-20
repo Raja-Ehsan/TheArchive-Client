@@ -1,0 +1,93 @@
+.users {
+    margin-top: 120px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 0 10px 0 10px;
+}
+
+.users-page-container {
+    padding: .1px;
+    height: 100%;
+    background-color: grey;
+}
+
+.users-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.users-item {
+    cursor: pointer;
+    width: 550px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(228, 228, 228);
+    margin: 10px;
+    box-shadow: 4px 4px 10px rgb(26, 26, 26);
+    border: 2px solid rgb(26, 26, 26);
+}
+
+.users-item-allorders {
+    cursor: pointer;
+    width: 800px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(230, 230, 230);
+    margin: 10px;
+    box-shadow: 4px 4px 10px rgb(26, 26, 26);
+    border: 2px solid rgb(26, 26, 26);
+}
+
+.users-item>div {
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    margin: 5px;
+}
+.users-item h3 {
+    margin: 0 20px 0 20px;
+}
+
+.users-item span {
+    color: rgb(9, 9, 9);
+    margin: 5px;
+}
+
+.users-item p {
+    color: rgb(62, 62, 62);
+}
+
+.users-img{
+    margin: 10px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 2px solid rgb(112, 112, 112);
+}
+
+@media only screen and (max-width: 880px) {
+    .users-item {
+        width: 90%;
+        margin: 10px;
+    }
+
+    .users-item-allorders {
+        width: 90%;
+        margin: 10px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .users-item>div {
+        flex-direction: column;
+    }
+
+    .users {
+        padding: 10px;
+        margin-top: 40px;
+    }
+}
+

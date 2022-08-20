@@ -4,14 +4,13 @@ import Heading from '../components/heading'
 import Nav from '../components/nav'
 import { CartCard } from '../components/cartCard'
 
-export const Adminpending = () => {
+export const Admincomplete = () => {
     const [show, setShow] = useState(false)
-
   return (
     <div className='order-page-container'>
             <Nav />
             <div className="orders">
-                <Heading item='Pending Orders' />
+                <Heading item='Completed Orders' />
                 <div className="orders-container">
                     <div className="order-item" onClick={() => { setShow(!show) }}>
                         <div clas>
@@ -25,9 +24,6 @@ export const Adminpending = () => {
                                 <span>Address1 </span>: Mohallah Chappar Choa Saidan Shah Chakwal <br />
                                 <span>Address2</span> : Mohallah Chappar Choa Saidan Shah Chakwal
                             </p>
-                            <button style={{width:'150px'}}>
-                                Approve Order
-                            </button>
                         </div>
                     </div>
                     {
@@ -55,9 +51,6 @@ export const Adminpending = () => {
                                 <span>Address1 </span>: Mohallah Chappar Choa Saidan Shah Chakwal <br />
                                 <span>Address2</span> : Mohallah Chappar Choa Saidan Shah Chakwal
                             </p>
-                            <button style={{width:'150px'}}>
-                                Approve Order
-                            </button>
                         </div>
                     </div>
                     <div className="order-item">
@@ -72,9 +65,6 @@ export const Adminpending = () => {
                                 <span>Address1 </span>: Mohallah Chappar Choa Saidan Shah Chakwal <br />
                                 <span>Address2</span> : Mohallah Chappar Choa Saidan Shah Chakwal
                             </p>
-                            <button style={{width:'150px'}}>
-                                Approve Order
-                            </button>
                         </div>
                     </div>
                     <div className="order-item">
@@ -89,9 +79,6 @@ export const Adminpending = () => {
                                 <span>Address1 </span>: Mohallah Chappar Choa Saidan Shah Chakwal <br />
                                 <span>Address2</span> : Mohallah Chappar Choa Saidan Shah Chakwal
                             </p>
-                            <button style={{width:'150px'}}>
-                                Approve Order
-                            </button>
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,9 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import { Checkout } from "./pages/Checkout";
 import { AdminHome } from "./pages/AdminHome";
-import { Adminplaced } from "./pages/Adminplaced";
+import { Adminapproved } from "./pages/Adminapproved";
+import { Adminpending } from "./pages/Adminpending";
+import { Adminusers } from "./pages/Adminusers";
 function App() {
   return (
     <>
@@ -25,7 +27,10 @@ function App() {
         <Route path='/cart' exact element={<Cart/>}/>
         <Route path='/checkout' exact element={<Checkout/>}/>
         <Route path='/admin' exact element={<AdminHome/>}/>
-        <Route path='/admin/order/placed' exact element={<Adminplaced/>}/>
+        <Route path='/admin/order/approved' exact element={<Adminapproved/>}/>
+        <Route path='/admin/order/pending' exact element={<Adminpending/>}/>
+        <Route path='/admin/order/complete' exact element={<Adminpending/>}/>
+        <Route path='/admin/users' exact element={<Adminusers/>}/>
       </Routes>
     </>
   );

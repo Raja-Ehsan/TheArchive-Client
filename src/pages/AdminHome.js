@@ -15,7 +15,7 @@ export const AdminHome = () => {
                         <h1>$200</h1>
                 </div>
                 <div className="item-inner2">
-                    <h3>Total Sellings</h3>
+                    <a href="/admin"><h3>Total Sellings</h3></a>
                 </div>
             </div>
             <div className="item">
@@ -23,7 +23,7 @@ export const AdminHome = () => {
                         <h1>2</h1>
                 </div>
                 <div className="item-inner2">
-                    <h3>Completed Orders</h3>
+                    <a href="/admin/order/complete"><h3>Completed Orders</h3></a>
                 </div>
             </div>
             <div className="item">
@@ -31,7 +31,7 @@ export const AdminHome = () => {
                         <h1>50</h1>
                 </div>
                 <div className="item-inner2">
-                    <h3>Orders Placed</h3>
+                    <a href="/admin/order/approved"><h3>Orders Approved</h3></a>
                 </div>
             </div>
             <div className="item">
@@ -39,7 +39,7 @@ export const AdminHome = () => {
                         <h1>8</h1>
                 </div>
                 <div className="item-inner2">
-                    <h3>Pending Orders</h3>
+                    <a href="/admin/order/pending"><h3>Pending Orders</h3></a>
                 </div>
             </div>
             <div className="item">
@@ -47,7 +47,7 @@ export const AdminHome = () => {
                         <h1>5</h1>
                 </div>
                 <div className="item-inner2">
-                    <h3>Normal Users</h3>
+                    <a href="/admin/users"><h3>Normal Users</h3></a>
                 </div>
             </div>
             <div className="item">
@@ -55,7 +55,7 @@ export const AdminHome = () => {
                         <h1>1</h1>
                 </div>
                 <div className="item-inner2">
-                    <h3>Admin Users</h3>
+                    <a href="/admin/users"><h3>Admin Users</h3></a>
                 </div>
             </div>
             <div className="item">
@@ -63,15 +63,7 @@ export const AdminHome = () => {
                         <h1>6</h1>
                 </div>
                 <div className="item-inner2">
-                    <h3>Total Accounts</h3>
-                </div>
-            </div>
-            <div className="item">
-                <div className="item-inner1">
-                        <h1>9</h1>
-                </div>
-                <div className="item-inner2">
-                    <h3>New Messages</h3>
+                    <a href="/admin/users"><h3>Total Accounts</h3></a>
                 </div>
             </div>
          </div>

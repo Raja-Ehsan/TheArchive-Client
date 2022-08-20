@@ -1,20 +1,20 @@
 import React, { useState } from 'react'
-import "../css/Adminplaced.css"
+import "../css/Adminapproved.css"
 import Heading from '../components/heading'
 import Nav from '../components/nav'
 import { CartCard } from '../components/cartCard'
 
-export const Adminplaced = () => {
+export const Adminapproved = () => {
     const [show, setShow] = useState(false)
 
     return (
         <div className='order-page-container'>
             <Nav />
             <div className="orders">
-                <Heading item='Placed Orders' />
+                <Heading item='Approved Orders' />
                 <div className="orders-container">
                     <div className="order-item" onClick={() => { setShow(!show) }}>
-                        <div clas>
+                        <div >
                             <h1>Order No 1.</h1>
                             <h3>Total:<span>$25</span> </h3>
                         </div>
@@ -25,9 +25,6 @@ export const Adminplaced = () => {
                                 <span>Address1 </span>: Mohallah Chappar Choa Saidan Shah Chakwal <br />
                                 <span>Address2</span> : Mohallah Chappar Choa Saidan Shah Chakwal
                             </p>
-                            <button style={{width:'150px'}}>
-                                Place Order
-                            </button>
                         </div>
                     </div>
                     {
