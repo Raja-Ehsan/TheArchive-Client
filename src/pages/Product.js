@@ -57,7 +57,7 @@ function Product(props) {
                         <div className="product-info-container"> 
                             <h2> Harry Potter and The Philosopher's Stone</h2>
                             <h2>20$</h2>
-                            <button>Add to Cart</button>
+                            <button className="add-to-cart">Add to Cart</button>
                             <div style={{display:'flex'}}>
                             <h3 style={{display:'inline'}}>Author:</h3><span style={{marginTop:'12px',fontSize:'18px',color:'grey'}}>J. K. Rowling</span>
                             </div>

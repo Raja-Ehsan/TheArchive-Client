@@ -13,6 +13,7 @@ import { AdminHome } from "./pages/AdminHome";
 import { Adminapproved } from "./pages/Adminapproved";
 import { Adminpending } from "./pages/Adminpending";
 import { Adminusers } from "./pages/Adminusers";
+import { Addproduct } from "./pages/Addproduct";
 function App() {
   return (
     <>
@@ -31,6 +32,7 @@ function App() {
         <Route path='/admin/order/pending' exact element={<Adminpending/>}/>
         <Route path='/admin/order/complete' exact element={<Adminpending/>}/>
         <Route path='/admin/users' exact element={<Adminusers/>}/>
+        <Route path='/admin/addproduct' exact element={<Addproduct/>}/>
       </Routes>
     </>
   );

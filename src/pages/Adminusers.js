@@ -5,7 +5,7 @@ import Nav from '../components/nav'
 export const Adminusers = () => {
   return (
     <div className='users-page-container'>
-            <Nav />
+            <Nav  admin={true} />
             <div className="users">
                 <Heading item='All Users' />
                 <div className="users-container">

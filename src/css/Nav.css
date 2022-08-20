@@ -152,3 +152,46 @@ nav{
     
     
     }
+
+.admin-nav-container{
+
+    position: absolute;
+    display: flex;
+    width: 100%;
+    top: 0px;
+    left: 0;
+    flex-direction: column;
+    z-index: +1;
+    position: fixed;
+    box-shadow: 1px 2.5px 4px black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(224, 224, 224);
+    background-color: rgb(25, 25, 25);
+}
+.admin-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+}
+.logo-title{
+font-size: 25px;
+}
+.box{
+    display: flex;
+    margin: 10px 5px 10px 5px;
+    cursor: pointer;
+}
+.logout:hover{
+    color: grey;
+
+}
+.elements:hover{
+    color: grey;
+
+}
+.elements{
+    margin: 0 10px 0 10px;
+    font-size: 15px;
+}

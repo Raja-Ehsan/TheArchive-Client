@@ -9,7 +9,7 @@ export const Adminpending = () => {
 
   return (
     <div className='order-page-container'>
-            <Nav />
+            <Nav  admin={true} />
             <div className="orders">
                 <Heading item='Pending Orders' />
                 <div className="orders-container">

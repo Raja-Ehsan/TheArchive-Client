@@ -8,7 +8,7 @@ export const Admincomplete = () => {
     const [show, setShow] = useState(false)
   return (
     <div className='order-page-container'>
-            <Nav />
+            <Nav admin={true}  />
             <div className="orders">
                 <Heading item='Completed Orders' />
                 <div className="orders-container">
