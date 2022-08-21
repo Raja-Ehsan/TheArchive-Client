@@ -5,8 +5,14 @@ import Heading from '../components/heading'
 import Nav from '../components/nav'
 import { Subscribe } from '../components/subscribe'
 import { CartCard } from '../components/cartCard'
+import { useSelector } from 'react-redux'
+import { Card } from '@mui/material'
 
 export const Cart = () => {
+    const cart = useSelector((state) => state.reducers.cart);
+    const total = cart.reduce((accumulator, object) => {
+        return accumulator + object.bookPrice*object.quantity;
+    }, 0)
     return (
         <div className='page-sizing'>
             <Nav />
@@ -14,16 +20,19 @@ export const Cart = () => {
                 <Heading item='My Cart' />
                 <div className="cart-container">
                     <div className="cart-content">
-                       <CartCard/>
-                       <CartCard/>
-                       <CartCard/>
-                       <CartCard/>
+                        {
+                            cart.map((item) => {
+                                return (
+                                    <CartCard {...item} />
+                                )
+                            })
+                        }
                     </div>
                     <div className="pricing">
                         <div>
                             <div className="horizontal">
                                 <h3 className='item-price'>Sub-Total</h3>
-                                <h3>$200</h3>
+                                <h3>{total}$</h3>
                             </div>
                         </div>
                         <div>
@@ -39,12 +48,12 @@ export const Cart = () => {
                             </div>
                         </div>
                         <div>
-                            <div style={{color:'red'}} className="horizontal">
+                            <div style={{ color: 'red' }} className="horizontal">
                                 <h3 className='item-price'>Total</h3>
-                                <h3>$180</h3>
+                                <h3>{cart.length?total + 10 + total*.05:0}$</h3>
                             </div>
                         </div>
-                            <button>Proceed to Checkout</button>
+                        <button>Proceed to Checkout</button>
                     </div>
                 </div>
             </div>

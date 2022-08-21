@@ -7,7 +7,45 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Subscribe } from "../components/subscribe";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { removeCurrentProduct, setCurrentProduct, addToCart, removeFromCart, itemIncrement, itemDecrement } from "../redux/actions/productActions";
 function Product(props) {
+    const currentProduct = useSelector((state) => state.reducers.currentProduct)
+    const cart = useSelector((state) => state.reducers.cart);
+    const dispatch = useDispatch();
+
+    const { id } = useParams();
+    useEffect(() => {
+        fetch(`http://localhost:1000/book/getProduct/${id}`)
+            .then(res => res.json())
+            .then(res => {
+                dispatch(setCurrentProduct(res))
+            })
+        return () => {
+            dispatch(removeCurrentProduct())
+        }
+    }, [id])
+
+    const handleCartButton = () => {
+        cart.filter(item => item._id === currentProduct._id).length ?
+            dispatch(removeFromCart(currentProduct?._id)) :
+            dispatch(addToCart({ ...currentProduct, quantity: 1 }))
+    }
+
+    function increment() {
+        dispatch(itemIncrement(currentProduct._id))
+    }
+    function decrement() {
+        if (cart.find((item) => item._id === currentProduct._id).quantity != 1) {
+            dispatch(itemDecrement(currentProduct._id))
+        }
+        else {
+            dispatch(removeFromCart(currentProduct._id))
+        }
+    }
+
     var settings = {
         dots: true,
         infinite: false,
@@ -16,7 +54,7 @@ function Product(props) {
         initialSlide: 0,
         autoplay: true,
         speed: 2000,
-        autoplaySpeed:2000,
+        autoplaySpeed: 2000,
         responsive: [
             {
                 breakpoint: 1300,
@@ -46,6 +84,8 @@ function Product(props) {
             }
         ]
     };
+
+
     return (
         <div className="page-sizing">
             <Nav />
@@ -53,18 +93,18 @@ function Product(props) {
                 <Heading item='Showing Product...' />
                 <div className="product-cont">
                     <div className="product">
-                        <img src={require('../images/book1.jpg')} alt="" className="product-img"/>
-                        <div className="product-info-container"> 
-                            <h2> Harry Potter and The Philosopher's Stone</h2>
-                            <h2>20$</h2>
-                            <button className="add-to-cart">Add to Cart</button>
-                            <div style={{display:'flex'}}>
-                            <h3 style={{display:'inline'}}>Author:</h3><span style={{marginTop:'12px',fontSize:'18px',color:'grey'}}>J. K. Rowling</span>
+                        {currentProduct.image ? <img src={require(`../images/${currentProduct?.image}`)} alt="" className="product-img" /> : <img src="" alt="" className="product-img" />}
+                        <div className="product-info-container">
+                            <h2> {currentProduct?.bookName}</h2>
+                            <h2>{currentProduct?.bookPrice}$</h2>
+                            {!cart.filter(item => item._id === currentProduct._id).length ? <button className="add-to-cart" onClick={handleCartButton} >Add to Cart</button> : <div className="counter"><button className="decrement" onClick={decrement}>-</button> <div>{cart.find((item) => item._id === currentProduct._id).quantity}</div> <button className="increment" onClick={increment}>+</button></div>}
+                            <div style={{ display: 'flex' }}>
+                                <h3 style={{ display: 'inline' }}>Author:</h3><span style={{ marginTop: '12px', fontSize: '18px', color: 'grey' }}>{currentProduct?.bookAuthor}</span>
                             </div>
-                            <div style={{display:'flex'}}><h3 style={{display:'inline'}}>PublishedOn:</h3><span style={{marginTop:'12px',fontSize:'18px',color:'grey'}}>26 June 1997</span></div>
-                            <div style={{display:'flex'}}><h3 style={{display:'inline'}}>Pages:</h3><span style={{marginTop:'12px',fontSize:'18px',color:'grey'}}>223 (first edition)</span></div>
-                            <div style={{display:'flex'}}><h3 style={{display:'inline'}}>Description:</h3></div>
-                            <span style={{margin:'12px',marginTop:'0px',fontSize:'18px',color:'grey',maxWidth:'400px',textJustify:'inter-word'}}>It is a story about Harry Potter, an orphan brought up by his aunt and uncle because his parents were killed when he was a baby. Harry is unloved by his uncle and aunt but everything changes when he is invited to join Hogwarts School of Witchcraft </span>
+                            <div style={{ display: 'flex' }}><h3 style={{ display: 'inline' }}>PublishedOn:</h3><span style={{ marginTop: '12px', fontSize: '18px', color: 'grey' }}>{currentProduct?.publishedOn}</span></div>
+                            <div style={{ display: 'flex' }}><h3 style={{ display: 'inline' }}>Pages:</h3><span style={{ marginTop: '12px', fontSize: '18px', color: 'grey' }}>{currentProduct?.bookPages}</span></div>
+                            <div style={{ display: 'flex' }}><h3 style={{ display: 'inline' }}>Description:</h3></div>
+                            <span style={{ margin: '12px', marginTop: '0px', fontSize: '18px', color: 'grey', maxWidth: '400px', textJustify: 'inter-word' }}>{currentProduct?.bookdescription}</span>
                         </div>
                     </div>
                 </div>
@@ -73,7 +113,7 @@ function Product(props) {
             <div className="product-container">
                 <div className="product-slider">
                     <Slider {...settings} >
-                       <div>
+                        {/* <div>
                         <Card img='book1.jpg' />
                        </div>
                        <div>
@@ -96,11 +136,11 @@ function Product(props) {
                        </div>
                        <div>
                         <Card img='book3.jpg' />
-                       </div>
+                       </div> */}
                     </Slider>
                 </div>
             </div>
-            <Subscribe/>
+            <Subscribe />
             <Footer />
         </div>
     )

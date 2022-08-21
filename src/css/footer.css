@@ -7,7 +7,7 @@
     align-items: center;
     color: rgb(137, 137, 137);
     flex-direction: column;
-    border-top: 2px solid rgb(204, 204, 204);
+    border-top: 2px solid rgb(148, 148, 148);
     position: sticky;
     top: 100%;
 }

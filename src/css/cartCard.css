@@ -59,7 +59,10 @@
 
 }
 
-.horizontal button {
+.counter>button{
+    width: 35px;
+}
+.horizontal .remove {
     border-radius: 5px;
     width: 90px;
     padding: 8px;
@@ -75,6 +78,8 @@
     border-radius: 10px;
     display: flex;
     margin: 10px;
+    justify-content: center;
+    align-items: center;
     width: 95%;
     padding: 10px;
     background-color: rgb(255, 255, 255);

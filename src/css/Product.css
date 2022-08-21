@@ -3,11 +3,18 @@
     justify-content: center;
     align-items: center;
 }
-.icons{
-
+.counter{
+    display: flex;
+    width: 280px;
+    padding: 0px;
+    align-items: center;
 }
-.icon-numbers{
-
+.counter>button{
+    background-color: rgb(37, 37, 37);
+    width: 35px;    
+}
+.counter>div{
+    font-weight: bolder; 
 }
 
 .product{

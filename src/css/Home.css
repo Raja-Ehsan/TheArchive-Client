@@ -26,7 +26,7 @@
     width: 100%;
     margin: 0 0 5px;
     padding: 10px;
-    height: 250px;
+    height: 260px;
     display: flex;
     cursor: pointer;
     justify-content: center;
@@ -38,7 +38,7 @@
     width: 100%;
     margin: 0 0 5px;
     padding: 10px;
-    height: 325px;
+    height: 330px;
     display: flex;
     cursor: pointer;
     justify-content: center;
@@ -50,7 +50,7 @@
     width: 100%;
     margin: 0 0 5px;
     padding: 10px;
-    height: 325px;
+    height: 330px;
     display: flex;
     cursor: pointer;
     justify-content: center;
@@ -75,7 +75,7 @@
     width: 100%;
     margin: 0 0 5px;
     padding: 10px;
-    height: 250px;
+    height: 259px;
     display: flex;
     cursor: pointer;
     justify-content: center;
@@ -145,6 +145,7 @@
   }
   @media only screen and (max-width: 600px) {
     .container {
+      width: 90%;
         columns:1;
     }
     .card-3{

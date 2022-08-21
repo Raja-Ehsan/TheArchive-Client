@@ -14,6 +14,8 @@ import { Adminapproved } from "./pages/Adminapproved";
 import { Adminpending } from "./pages/Adminpending";
 import { Adminusers } from "./pages/Adminusers";
 import { Addproduct } from "./pages/Addproduct";
+import { Shop } from "./pages/Shop";
+import { Search } from "./pages/Search";
 function App() {
   return (
     <>
@@ -23,9 +25,11 @@ function App() {
         <Route path='/register' exact element={<Register/>}/>
         <Route path='/about' exact element={<About/>}/>
         <Route path='/contact-us' exact element={<Contact/>}/>
-        <Route path='/products/horror' exact element={<Products/>}/>
-        <Route path='/product/123' exact element={<Product/>}/>
+        <Route path='/products' exact element={<Products/>}/>
+        <Route path='/products/search' exact element={<Search/>}/>
+        <Route path='/product/:id' exact element={<Product/>}/>
         <Route path='/cart' exact element={<Cart/>}/>
+        <Route path='/shop' exact element={<Shop/>}/>
         <Route path='/checkout' exact element={<Checkout/>}/>
         <Route path='/admin' exact element={<AdminHome/>}/>
         <Route path='/admin/order/approved' exact element={<Adminapproved/>}/>

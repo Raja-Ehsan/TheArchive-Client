@@ -1,19 +1,21 @@
+import React from 'react'
+import '../css/Search.css'
 import "../css/Products.css"
-import Nav from "../components/nav";
-import Footer from "../components/footer";
-import Heading from "../components/heading";
-import Card from "../components/card";
-import { Subscribe } from "../components/subscribe";
-import { useLocation } from "react-router-dom";
-function Products(props) {
-    const { search } = useLocation();
-    const query = new URLSearchParams(search);
-    const keyword = query.get('category');
+import Nav from '../components/nav'
+import Footer from '../components/footer'
+import { Subscribe } from '../components/subscribe'
+import Heading from '../components/heading'
+import Card from '../components/card'
+
+export const Search = () => {
     return (
-        <div className="page-sizing">
+        <div style={{ backgroundColor: 'rgb(233, 233, 233)', height: '100%', padding: '0.1px' }}>
             <Nav />
-            <div className="whole-container" >
-                <Heading item={keyword} />
+            <div className="whole-container">
+                <Heading item='Search' />
+                <div className='message'>
+                    <h3>Search Results for Harry Potter:</h3>
+                </div>
                 <div className="all-products-container">
                     <div >
                         <label htmlFor="sort">Sort-By</label>
@@ -31,12 +33,11 @@ function Products(props) {
                         <Card img='book4.jpg' />
                         <Card img='book3.jpg' />
                         <Card img='book2.jpg' />
-                    </div></div>
+                    </div>
+                </div>
             </div>
-            <Subscribe/>
+            <Subscribe />
             <Footer />
         </div>
     )
 }
-
-export default Products;
