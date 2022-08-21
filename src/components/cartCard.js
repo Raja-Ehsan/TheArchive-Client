@@ -23,7 +23,7 @@ export const CartCard = (props) => {
     return (
         <>
             <div className="cart-item-content">
-                <img className='cart-item-img' src={require('../images/book1.jpg')} alt="" />
+                <img className='cart-item-img' src={require(`../images/${props.image}`)} alt="" />
                 <div className="cart-item-info">
                     <h2 className='title'>{props.bookName}</h2>
                     <h3 className='item-price'>Price:<span >{props.bookPrice}$</span></h3>

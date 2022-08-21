@@ -94,7 +94,7 @@ function Home() {
             <div className="product-container">
                 <div className="product-slider">
                     <Slider {...settings}>
-                        {allProducts.products?.map((item)=>{
+                        {allProducts.products?.filter((item=>item.featured)).map((item)=>{
                             return(
                                 <div >
                             <Card {...item} />
