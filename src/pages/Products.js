@@ -5,7 +5,9 @@ import Heading from "../components/heading";
 import Card from "../components/card";
 import { Subscribe } from "../components/subscribe";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 function Products(props) {
+    const allProducts = useSelector((state) => state.reducers.allProducts);
     const { search } = useLocation();
     const query = new URLSearchParams(search);
     const keyword = query.get('category');
@@ -23,14 +25,14 @@ function Products(props) {
                         </select>
                     </div>
                     <div className="products">
-                        <Card img='book1.jpg' />
-                        <Card img='book2.jpg' />
-                        <Card img='book3.jpg' />
-                        <Card img='book4.jpg' />
-                        <Card img='book1.jpg' />
-                        <Card img='book4.jpg' />
-                        <Card img='book3.jpg' />
-                        <Card img='book2.jpg' />
+                    {allProducts.products?.filter((item=>item.category===keyword)).map((item)=>{
+                            return(
+                                <div >
+                            <Card {...item} />
+                        </div>
+                            )
+                        })}
+
                     </div></div>
             </div>
             <Subscribe/>

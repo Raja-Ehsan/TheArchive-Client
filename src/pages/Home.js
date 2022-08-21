@@ -10,6 +10,7 @@ import Card from "../components/card";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { setProducts } from "../redux/actions/productActions";
+import { Link } from "react-router-dom";
 
 function Home() {
     const allProducts = useSelector((state) => state.reducers.allProducts);
@@ -71,34 +72,40 @@ function Home() {
             <div className="whole-container">
             </div>
             <div className="container">
-                <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=Action and Adventures"><div className="card-1">
+                <Link to="/products?category=Action and Adventures"><div className="card-1">
                     <h2>Action and Adventures.</h2>
-                </div></a>
-                <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=History"> <div className="card-2">
+                </div>
+                </Link>
+                <Link to="/products?category=History"> <div className="card-2">
                     <h2>History.</h2>
-                </div></a>
-                <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=Comic Book or Graphic Novel"> <div className="card-3">
+                </div>
+                </Link>
+                <Link to="/products?category=Comic Book or Graphic Novel"> <div className="card-3">
                     <h2>Comic Book or Graphic Novel.</h2>
-                </div></a>
-                <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=Detective and Mystery"> <div className="card-4">
+                </div>
+                </Link>
+                <Link to="/products?category=Detective and Mystery"> <div className="card-4">
                     <h2>Detective and Mystery.</h2>
-                </div></a>
-                <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=Romantic Novel"><div className="card-5">
+                </div>
+                </Link>
+                <Link to="/products?category=Romantic Novel"><div className="card-5">
                     <h2>Romantic Novel.</h2>
-                </div></a>
-                <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=Horrer"> <div className="card-6">
+                </div>
+                </Link>
+                <Link to="/products?category=Horrer"> <div className="card-6">
                     <h2>Horrer</h2>
-                </div></a>
+                </div>
+                </Link>
             </div>
             <Heading item='Featured Books' />
             <div className="product-container">
                 <div className="product-slider">
                     <Slider {...settings}>
-                        {allProducts.products?.filter((item=>item.featured)).map((item)=>{
-                            return(
+                        {allProducts.products?.filter((item => item.featured)).map((item) => {
+                            return (
                                 <div >
-                            <Card {...item} />
-                        </div>
+                                    <Card {...item} />
+                                </div>
                             )
                         })}
 
@@ -108,12 +115,12 @@ function Home() {
             <Heading item='New Arrivals' />
             <div className="product-container">
                 <div className="product-slider">
-                <Slider {...settings}>
-                        {allProducts.products?.map((item)=>{
-                            return(
+                    <Slider {...settings}>
+                        {allProducts.products?.map((item) => {
+                            return (
                                 <div >
-                            <Card {...item} />
-                        </div>
+                                    <Card {...item} />
+                                </div>
                             )
                         })}
 
