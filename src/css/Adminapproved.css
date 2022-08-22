@@ -5,8 +5,11 @@
 
 .order-page-container {
     padding: .1px;
-    height: 100%;
-    background-color: grey;
+    width: 100vw;
+}
+
+html{
+    background-color: rgb(186, 186, 186);
 }
 
 .orders-container {
@@ -30,12 +33,27 @@
 .order-item-allorders {
     cursor: pointer;
     width: 800px;
+    height: 240px;
+    overflow: scroll;
     border-radius: 10px;
     padding: 10px;
     background-color: rgb(230, 230, 230);
     margin: 10px;
     box-shadow: 4px 4px 10px rgb(26, 26, 26);
     border: 2px solid rgb(26, 26, 26);
+    animation-name: itemshow;
+    animation-duration: .5s;
+    animation-fill-mode: both;
+}
+
+@keyframes itemshow {
+    0% {
+        height: 20px;
+    }
+
+    100% {
+        height: 240px;
+    }
 }
 
 .order-item>div {
@@ -48,6 +66,13 @@
 .order-item span {
     color: rgb(0, 0, 158);
     margin: 5px;
+}
+.order-item h4 {
+    margin: 5px;
+    text-decoration: underline;
+}
+.order-item h4:hover {
+    color: grey;
 }
 
 .order-item p {

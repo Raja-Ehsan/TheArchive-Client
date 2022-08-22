@@ -6,15 +6,21 @@ import Footer from '../components/footer'
 import { Subscribe } from '../components/subscribe'
 import Heading from '../components/heading'
 import Card from '../components/card'
+import { useLocation } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export const Search = () => {
+    const allProducts = useSelector((state) => state.reducers.allProducts);
+    const { search } = useLocation();
+    const query = new URLSearchParams(search);
+    const keyword = query.get('keyword');
     return (
         <div style={{ backgroundColor: 'rgb(233, 233, 233)', height: '100%', padding: '0.1px' }}>
             <Nav />
             <div className="whole-container">
                 <Heading item='Search' />
                 <div className='message'>
-                    <h3>Search Results for Harry Potter:</h3>
+                    <h3>Search Results for {keyword}:</h3>
                 </div>
                 <div className="all-products-container">
                     <div >
@@ -25,14 +31,13 @@ export const Search = () => {
                         </select>
                     </div>
                     <div className="products">
-                        <Card img='book1.jpg' />
-                        <Card img='book2.jpg' />
-                        <Card img='book3.jpg' />
-                        <Card img='book4.jpg' />
-                        <Card img='book1.jpg' />
-                        <Card img='book4.jpg' />
-                        <Card img='book3.jpg' />
-                        <Card img='book2.jpg' />
+                    {allProducts?.products.filter((item=>item.bookName.match(new RegExp(keyword, "i")))).map((item)=>{
+                            return(
+                                <div >
+                            <Card {...item} key={item._id}/>
+                        </div>
+                            )
+                        })}
                     </div>
                 </div>
             </div>

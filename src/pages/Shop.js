@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import Footer from '../components/footer'
 import Nav from '../components/nav'
 import { Subscribe } from '../components/subscribe'
@@ -8,7 +8,12 @@ import SearchIcon from '@mui/icons-material/Search';
 import Slider from "react-slick";
 import Card from '../components/card'
 import "../css/shop.css"
-export const Shop = () => {
+import { useSelector } from 'react-redux';
+export const Shop = () => { 
+    const [keyword,setKeyword]=useState(null);
+    const cart=useSelector((state)=>state.reducers.cart);
+    const searchLink=useRef();
+    const allProducts = useSelector((state) => state.reducers.allProducts);
     var settings = {
         dots: true,
         infinite: false,
@@ -63,7 +68,7 @@ export const Shop = () => {
         </div>
         <div className="category">
         <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=Action and Adventures"><div className="cat cat1"><h3>Action and Adventure</h3></div></a>
-        <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=Comic Book and Graphic Novel"><div className="cat cat2"><h3>Comic Book and Graphic Novel</h3></div></a>
+        <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=Comic Book or Graphic Novel"><div className="cat cat2"><h3>Comic Book and Graphic Novel</h3></div></a>
         <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=Romantic Novel"><div className="cat cat3"><h3>Romantic Novel</h3></div></a>
         <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=History"><div className="cat cat4"><h3>History</h3></div></a>
         <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=Detective and Mystery"><div className="cat cat5"><h3>Detective and Mystery</h3></div></a>
@@ -76,7 +81,8 @@ export const Shop = () => {
         </div>
         <div className="category" id='cat' style={{height:'25vh'}}>
                 <div className='search-bar'>
-                    <input type="text"  placeholder='Search For Books'/>
+                    <input autoFocus type="text" onKeyPress={(e)=>{if(e.key === 'Enter')searchLink.current.click()}} onChange={(e)=>{setKeyword(e.target.value)}}    placeholder='Search For Books'/>
+                    <a ref={searchLink} style={{ textDecoration: 'none', color: 'rgb(66, 66, 66)',display:'none' }} href={`/products/search?keyword=${keyword}`}>search</a>
                     <div><SearchIcon/></div>
                 </div>
         </div>
@@ -88,30 +94,13 @@ export const Shop = () => {
         <div className="category">
         <div className="product-slider">
                     <Slider {...settings}>
-                    <div >
-                        <Card img='book1.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book2.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book3.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book4.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book1.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book4.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book3.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book2.jpg' />
-                        </div>
+                    {allProducts.products?.map((item) => {
+                            return (
+                                <div >
+                                    <Card  key={item._id}  {...item}/>
+                                </div>
+                            )
+                        })}
 
                     </Slider>
                 </div>
@@ -124,31 +113,13 @@ export const Shop = () => {
         <div className="category">
         <div className="product-slider">
                     <Slider {...settings} {...settings1}>
-                    <div >
-                        <Card img='book1.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book2.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book3.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book4.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book1.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book4.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book3.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book2.jpg' />
-                        </div>
-
+                    {allProducts.products?.map((item) => {
+                            return (
+                                <div >
+                                    <Card  key={item._id}  {...item}/>
+                                </div>
+                            )
+                        })}
                     </Slider>
                 </div>
         </div>
@@ -161,31 +132,13 @@ export const Shop = () => {
         <div className="category">
         <div className="product-slider">
                     <Slider {...settings} {...settings1}>
-                    <div >
-                        <Card img='book1.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book2.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book3.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book4.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book1.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book4.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book3.jpg' />
-                        </div>
-                        <div>
-                        <Card img='book2.jpg' />
-                        </div>
-
+                                      {allProducts.products?.map((item) => {
+                            return (
+                                <div >
+                                    <Card  key={item._id}  {...item}/>
+                                </div>
+                            )
+                        })}
                     </Slider>
                 </div>
         </div>

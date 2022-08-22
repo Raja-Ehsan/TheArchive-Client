@@ -11,6 +11,8 @@ function Products(props) {
     const { search } = useLocation();
     const query = new URLSearchParams(search);
     const keyword = query.get('category');
+    console.log(allProducts.products[2].category)
+    console.log(keyword)
     return (
         <div className="page-sizing">
             <Nav />
@@ -25,10 +27,10 @@ function Products(props) {
                         </select>
                     </div>
                     <div className="products">
-                    {allProducts.products?.filter((item=>item.category===keyword)).map((item)=>{
+                    {allProducts?.products.filter((item=>item.category===keyword)).map((item)=>{
                             return(
                                 <div >
-                            <Card {...item} />
+                            <Card {...item} key={item._id}/>
                         </div>
                             )
                         })}

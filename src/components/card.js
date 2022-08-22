@@ -24,6 +24,7 @@ function Card(props) {
     }
     return (
         <>
+        {props._id?
             <div className="product-card">
                 <Link to={`/product/${props._id}`}><img className="card-img" src={require(`../images/${props.image}`)} alt="" /></Link>
                 <div className="info-container">
@@ -39,6 +40,9 @@ function Card(props) {
                 </div>
 
             </div>
+            :
+            <></>
+            }
         </>
     )
 }

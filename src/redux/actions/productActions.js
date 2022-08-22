@@ -40,3 +40,15 @@ export const itemDecrement=(id)=>{
         payload:id
     }
 }
+export const setOrders=(orders)=>{
+    return{
+        type:ActionTypes.SET_ORDERS,
+        payload:orders
+    }
+}
+export const changeOrderState=(orders)=>{
+    return{
+        type:ActionTypes.CHANGE_STATE,
+        payload:orders
+    }
+}

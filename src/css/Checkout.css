@@ -1,6 +1,6 @@
 .checkout{
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100cw;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -38,7 +38,7 @@
     display: flex;
     margin: 15px 0 15px 0;
 }
-.resp-element1>div{
+.resp-element1> div{
     margin: 10px;
 }
 .resp-element >input{
@@ -71,3 +71,9 @@
    margin: auto;
 }
 }
+@media only screen and (max-width: 1100px) {
+    form{
+        width:80%;
+        margin: auto;
+   }
+   }

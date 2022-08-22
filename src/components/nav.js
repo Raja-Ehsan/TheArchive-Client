@@ -2,12 +2,14 @@ import "../css/Nav.css";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 function User() {
     const [show, setShow] = useState(false)
+    const [keyword,setKeyword]=useState(null);
     const cart=useSelector((state)=>state.reducers.cart);
+    const searchLink=useRef();
     return (
         <div className="nav-container">
             <nav >
@@ -38,7 +40,8 @@ function User() {
             {
                 show ?
                     <div className="search-item">
-                        <input type="text" placeholder="Search for Books...." />
+                        <input autoFocus type="text" onKeyPress={(e)=>{if(e.key === 'Enter')searchLink.current.click()}} onChange={(e)=>{setKeyword(e.target.value)}}  placeholder="Search for Books...."  />
+                        <a ref={searchLink} style={{ textDecoration: 'none', color: 'rgb(66, 66, 66)',display:'none' }} href={`/products/search?keyword=${keyword}`}>search</a>
                     </div> :
                     <>
                     </>

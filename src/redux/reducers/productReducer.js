@@ -28,11 +28,27 @@ export const cartReducer = (state = [], { type, payload }) => {
         case ActionTypes.ADD_TO_CART:
             return [...state, payload];
         case ActionTypes.REMOVE_FROM_CART:
-            return state.filter((item) => item._id != payload)
+            return state.filter((item) => item._id !== payload)
         case ActionTypes.INCREMENT:
-            return state.map(item => (item._id === payload ? { ...item, quantity: item.quantity+1 } : item));;
+            return state.map(item => (item._id === payload ? { ...item, quantity: item.quantity + 1 } : item));
         case ActionTypes.DECREMENT:
-            return state.map(item => (item._id === payload ? { ...item, quantity: item.quantity-1 } : item));;
+            return state.map(item => (item._id === payload ? { ...item, quantity: item.quantity - 1 } : item));
+        default:
+            return state;
+    }
+}
+
+
+const orderInitial = {
+    orders: []
+}
+
+export const orderReducer = (state = orderInitial, { type, payload }) => {
+    switch (type) {
+        case ActionTypes.SET_ORDERS:
+            return { ...state, orders: payload };
+        case ActionTypes.CHANGE_STATE:
+            return {...state,orders:state.orders.map(item => (item._id === payload.id ? { ...item, state: payload.state } : item))}
         default:
             return state;
     }

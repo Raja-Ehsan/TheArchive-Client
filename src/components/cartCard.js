@@ -28,11 +28,11 @@ export const CartCard = (props) => {
                     <h2 className='title'>{props.bookName}</h2>
                     <h3 className='item-price'>Price:<span >{props.bookPrice}$</span></h3>
                     <div className="horizontal" style={props.admin ? { justifyContent: 'flex-end' } : {}}>
-                        <div className="counter"><button className="decrement" onClick={decrement}>-</button> <div>{props.quantity}</div> <button className="increment" onClick={increment}>+</button></div>
+                        {!props.admin?<div className="counter"><button className="decrement" onClick={decrement}>-</button> <div>{props.quantity}</div> <button className="increment" onClick={increment}>+</button></div>:<></>}
                         {!props.admin ? <div>
                             <button className='remove' onClick={removeCart}> Remove </button>
                         </div>
-                            : <></>}
+                            : <>Quantity:{props.quantity}</>}
                     </div>
 
                 </div>

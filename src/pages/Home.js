@@ -19,10 +19,10 @@ function Home() {
         fetch('http://localhost:1000/book/get')
             .then(res => res.json()).
             then(res => {
-                console.log(res)
                 dispatch(setProducts(res))
             })
     }, [])
+
 
     var settings = {
         dots: true,
@@ -104,7 +104,7 @@ function Home() {
                         {allProducts.products?.filter((item => item.featured)).map((item) => {
                             return (
                                 <div >
-                                    <Card {...item} />
+                                    <Card  key={item._id}  {...item}/>
                                 </div>
                             )
                         })}
@@ -119,7 +119,7 @@ function Home() {
                         {allProducts.products?.map((item) => {
                             return (
                                 <div >
-                                    <Card {...item} />
+                                    <Card   key={item._id} {...item}  />
                                 </div>
                             )
                         })}

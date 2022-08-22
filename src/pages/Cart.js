@@ -6,7 +6,7 @@ import Nav from '../components/nav'
 import { Subscribe } from '../components/subscribe'
 import { CartCard } from '../components/cartCard'
 import { useSelector } from 'react-redux'
-import { Card } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 export const Cart = () => {
     const cart = useSelector((state) => state.reducers.cart);
@@ -23,7 +23,7 @@ export const Cart = () => {
                         {
                             cart.map((item) => {
                                 return (
-                                    <CartCard {...item} />
+                                    <CartCard {...item} key={item._id} />
                                 )
                             })
                         }
@@ -53,7 +53,7 @@ export const Cart = () => {
                                 <h3>{cart.length?total + 10 + total*.05:0}$</h3>
                             </div>
                         </div>
-                        <button>Proceed to Checkout</button>
+                        <Link to={`/checkout`}><button disabled={cart.length?false:true} >Proceed to Checkout</button></Link>
                     </div>
                 </div>
             </div>
