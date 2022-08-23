@@ -8,7 +8,7 @@ function About() {
 
     return (
         <div className="page-sizing" style={{padding:'1px 0 0 0',backgroundImage:`url(${require('../images/cover.jpg')})`,height:'130vh'}}>
-            <Nav />
+            <Nav about={true}/>
             <div className="about-container">
                 <Heading item='About Us' />
 

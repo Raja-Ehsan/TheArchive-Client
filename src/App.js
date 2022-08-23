@@ -15,11 +15,14 @@ import { Adminusers } from "./pages/Adminusers";
 import { Addproduct } from "./pages/Addproduct";
 import { Shop } from "./pages/Shop";
 import { Search } from "./pages/Search";
+import { useSelector } from "react-redux";
+import { Restricted } from "./pages/Restricted";
 function App() {
+  const currentUser=useSelector((state)=>state.reducers.currentUser);
   return (
     <>
       <Routes>
-        <Route path='/' exact element={<Home />}/>
+        <Route path='/' exact element={<Home />}></Route>
         <Route path='/login' exact element={<Login/>}/>
         <Route path='/register' exact element={<Register/>}/>
         <Route path='/about' exact element={<About/>}/>
@@ -30,10 +33,10 @@ function App() {
         <Route path='/cart' exact element={<Cart/>}/>
         <Route path='/shop' exact element={<Shop/>}/>
         <Route path='/checkout' exact element={<Checkout/>}/>
-        <Route path='/admin' exact element={<AdminHome/>}/>
-        <Route path='/admin/order' exact element={<Adminpending/>}/>
-        <Route path='/admin/users' exact element={<Adminusers/>}/>
-        <Route path='/admin/addproduct' exact element={<Addproduct/>}/>
+        <Route path='/admin' exact element={currentUser?.userRole==='Admin'?<AdminHome/>:<Restricted/>}/>
+        <Route path='/admin/order' exact element={currentUser?.userRole==='Admin'?<Adminpending/>:<Restricted/>}/>
+        <Route path='/admin/users' exact element={currentUser?.userRole==='Admin'?<Adminusers/>:<Restricted/>}/>
+        <Route path='/admin/addproduct' exact element={currentUser?.userRole==='Admin'?<Addproduct/>:<Restricted/>}/>
       </Routes>
     </>
   );

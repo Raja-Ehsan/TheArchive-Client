@@ -43,13 +43,7 @@ export default function Register() {
     function handleSubmit() {
         var userCheck = /^[A-Za-z. ]{3,30}$/;
         var email=/^[A-Za-z_]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
-        if (!formdata.email.includes('@gmail.com')) setEmailError((prev) => {
-            return {
-                ...prev,
-                state: true
-            }
-        })
-        else if(!formdata.email||!formdata.password||!formdata.user||!formdata.city||!formdata.province){
+        if(!formdata.email||!formdata.password||!formdata.user||!formdata.city||!formdata.province){
             setrequired((prev) => {
                 return {
                     ...prev,
@@ -57,6 +51,12 @@ export default function Register() {
                 }
             })
         }
+        else if (!formdata.email.includes('@gmail.com')) setEmailError((prev) => {
+            return {
+                ...prev,
+                state: true
+            }
+        })
         else if(!email.test(formdata.email)){
             setCheckEmailError((prev) => {
                 return {
@@ -75,7 +75,7 @@ export default function Register() {
         }
         else {
             console.log("ueee")
-            fetch("https://zictate.herokuapp.com/signup", {
+            fetch("http://localhost:1000/register", {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify(formdata)
@@ -99,7 +99,7 @@ export default function Register() {
                     })
                 }
                 else
-                navigate('/')
+                navigate('/login')
             })
         }
 

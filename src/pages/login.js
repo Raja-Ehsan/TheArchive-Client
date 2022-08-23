@@ -1,9 +1,12 @@
 import React from "react"
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../css/login.css"
 import "../css/register.css"
+import { setCurrentUser } from "../redux/actions/userActions";
 export default function Login() {
-
+    const dispatch = useDispatch(); 
+    const currentUser=useSelector((state)=>state.reducers.currentUser);
     const navigate = useNavigate();
     const [formdata, setformdata] = React.useState({
         user: "", password: ""
@@ -25,7 +28,7 @@ export default function Login() {
             })
         }
         else {
-            fetch("https://wordoid-blogs.herokuapp.com/login", {
+            fetch("http://localhost:1000/login", {
                 method: 'POST',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
@@ -42,12 +45,8 @@ export default function Login() {
                 }
                 return res.json()
             }).then((res) => {
-                sessionStorage.setItem("User", JSON.stringify({
-                    userName: res.foundUser.userName,
-                    _id: res.foundUser._id,
-                    userEmail: res.foundUser.userEmail
-                }));
-                navigate('/')
+                dispatch(setCurrentUser(res.foundUser))
+                res.foundUser.userRole==='Normal'?navigate('/'):navigate('/admin')
             })
         }
     }

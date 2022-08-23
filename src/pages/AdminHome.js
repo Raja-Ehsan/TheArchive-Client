@@ -4,16 +4,25 @@ import Heading from '../components/heading'
 import Nav from '../components/nav'
 import "../css/admin.css"
 import { setOrders } from '../redux/actions/productActions'
+import { setAllUsers } from '../redux/actions/userActions'
 
 export const AdminHome = () => {
     
     const allOrders = useSelector((state) => state.reducers.orders);
+    const allUsers=useSelector((state)=>state.reducers.allUsers);
     const dispatch = useDispatch();
     useEffect(() => {
         fetch('http://localhost:1000/order/get')
             .then(res => res.json())
             .then(res => {
                 dispatch(setOrders(res))
+            })
+    }, [])
+    useEffect(() => {
+        fetch('http://localhost:1000/user/getAllUser')
+            .then(res => res.json())
+            .then(res => {
+                dispatch(setAllUsers(res))
             })
     }, [])
 
@@ -64,9 +73,9 @@ export const AdminHome = () => {
                     </div>
                     <div className="item">
                         <div className="item-inner1">
-                            <h1>5</h1>
+                            <h1>{allUsers?.filter((item)=>item.userRole==='Normal').length}</h1>
                         </div>
-                        <a href="/admin/users">
+                        <a href="/admin/users?keyword=Normal">
                             <div className="item-inner2">
                                 <h3>Normal Users</h3>
                             </div>
@@ -74,9 +83,9 @@ export const AdminHome = () => {
                     </div>
                     <div className="item">
                         <div className="item-inner1">
-                            <h1>1</h1>
+                            <h1>{allUsers?.filter((item)=>item.userRole==='Admin').length}</h1>
                         </div>
-                        <a href="/admin/users">
+                        <a href="/admin/users?keyword=Admin">
                             <div className="item-inner2">
                                 <h3>Admin Users</h3>
                             </div>
@@ -84,7 +93,7 @@ export const AdminHome = () => {
                     </div>
                     <div className="item">
                         <div className="item-inner1">
-                            <h1>6</h1>
+                            <h1>{allUsers?.length}</h1>
                         </div>
                         <a href="/admin/users">
                             <div className="item-inner2">

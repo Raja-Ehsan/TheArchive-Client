@@ -59,7 +59,7 @@ export const Shop = () => {
 
   return (
     <div style={{backgroundColor:'rgb(233, 233, 233)',height:'100%',padding:'0.1px'}}>
-    <Nav/>
+    <Nav shop={true}/>
     <div className="whole-container">
         <div className='Headline'>
             <h2>

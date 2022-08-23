@@ -68,7 +68,7 @@ function Home() {
     }
     return (
         <div className="page-sizing">
-            <Nav />
+            <Nav home={true}/>
             <div className="whole-container">
             </div>
             <div className="container">
