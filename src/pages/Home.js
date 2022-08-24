@@ -11,14 +11,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { setProducts } from "../redux/actions/productActions";
 import { Link } from "react-router-dom";
+import Lower from "../components/lower-nav";
 
 function Home() {
     const allProducts = useSelector((state) => state.reducers.allProducts);
     const dispatch = useDispatch();
     useEffect(() => {
         fetch('http://localhost:1000/book/get')
-            .then(res => res.json()).
-            then(res => {
+            .then(res => res.json())
+            .then(res => {
                 dispatch(setProducts(res))
             })
     }, [])
@@ -115,8 +116,8 @@ function Home() {
             <Heading item='New Arrivals' />
             <div className="product-container">
                 <div className="product-slider">
-                    <Slider {...settings}>
-                        {allProducts.products?.map((item) => {
+                    <Slider {...settings}{...settings1} >
+                        {allProducts.products?.slice(allProducts.products.length-8,allProducts.products.length).map((item) => {
                             return (
                                 <div >
                                     <Card   key={item._id} {...item}  />
@@ -129,6 +130,7 @@ function Home() {
             </div>
             <Subscribe />
             <Footer />
+            <Lower/>
         </div>
     )
 }

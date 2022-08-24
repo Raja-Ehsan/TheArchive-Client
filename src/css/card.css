@@ -3,6 +3,7 @@
     margin-top: 10px;
     cursor: pointer;
     position: relative;
+    height: 550px;
     top: 0;
     transition: top ease 0.2s;
     display: flex;

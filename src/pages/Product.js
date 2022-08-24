@@ -14,7 +14,8 @@ import { removeCurrentProduct, setCurrentProduct, addToCart, removeFromCart, ite
 function Product(props) {
     const currentProduct = useSelector((state) => state.reducers.currentProduct)
     const cart = useSelector((state) => state.reducers.cart);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(); 
+    const allProducts = useSelector((state) => state.reducers.allProducts);
 
     const { id } = useParams();
     useEffect(() => {
@@ -113,30 +114,13 @@ function Product(props) {
             <div className="product-container">
                 <div className="product-slider">
                     <Slider {...settings} >
-                        {/* <div>
-                        <Card img='book1.jpg' />
-                       </div>
-                       <div>
-                        <Card img='book2.jpg' />
-                       </div>
-                       <div>
-                        <Card img='book3.jpg' />
-                       </div>
-                       <div>
-                        <Card img='book4.jpg' />
-                       </div>
-                       <div>
-                        <Card img='book2.jpg' />
-                       </div>
-                       <div>
-                        <Card img='book4.jpg' />
-                       </div>
-                       <div>
-                        <Card img='book1.jpg' />
-                       </div>
-                       <div>
-                        <Card img='book3.jpg' />
-                       </div> */}
+                    {allProducts.products?.filter((item)=>item.category===currentProduct.category).slice(0,4).map((item) => {
+                            return (
+                                <div >
+                                    <Card   key={item._id} {...item}  />
+                                </div>
+                            )
+                        })}
                     </Slider>
                 </div>
             </div>

@@ -9,6 +9,11 @@ const persistConfig={
     storage
 }
 
+
+window.onbeforeunload = function() {
+  localStorage.clear();
+  }
+
 const persistedReducer=persistReducer(persistConfig,reducers)
 
 const store =configureStore({

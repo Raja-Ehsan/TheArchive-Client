@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Footer from '../components/footer'
 import Nav from '../components/nav'
 import { Subscribe } from '../components/subscribe'
@@ -8,12 +8,23 @@ import SearchIcon from '@mui/icons-material/Search';
 import Slider from "react-slick";
 import Card from '../components/card'
 import "../css/shop.css"
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setProducts } from '../redux/actions/productActions';
+import { Link } from 'react-router-dom';
 export const Shop = () => { 
     const [keyword,setKeyword]=useState(null);
+    const allProducts = useSelector((state) => state.reducers.allProducts);
     const cart=useSelector((state)=>state.reducers.cart);
     const searchLink=useRef();
-    const allProducts = useSelector((state) => state.reducers.allProducts);
+    const dispatch = useDispatch();
+    useEffect(() => {
+       !allProducts.products.length && fetch('http://localhost:1000/book/get')
+            .then(res => res.json())
+            .then(res => {
+                dispatch(setProducts(res))
+            })
+    }, [allProducts.products ])
+
     var settings = {
         dots: true,
         infinite: false,
@@ -67,12 +78,12 @@ export const Shop = () => {
             </h2>
         </div>
         <div className="category">
-        <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=Action and Adventures"><div className="cat cat1"><h3>Action and Adventure</h3></div></a>
-        <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=Comic Book or Graphic Novel"><div className="cat cat2"><h3>Comic Book and Graphic Novel</h3></div></a>
-        <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=Romantic Novel"><div className="cat cat3"><h3>Romantic Novel</h3></div></a>
-        <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=History"><div className="cat cat4"><h3>History</h3></div></a>
-        <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=Detective and Mystery"><div className="cat cat5"><h3>Detective and Mystery</h3></div></a>
-        <a style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} href="/products?category=Horrer"><div className="cat cat6"><h3>Horrer</h3></div></a>
+        <Link style={{width:'400px',marginRight:'20px', textDecoration: 'none', color: 'rgb(30, 30, 30)' }} to="/products?category=Action and Adventures"><div className="cat cat1"><h3>Action and Adventure</h3></div></Link>
+        <Link style={{width:'400px',marginRight:'20px', textDecoration: 'none', color: 'rgb(30, 30, 30)' }} to="/products?category=Comic Book or Graphic Novel"><div className="cat cat2"><h3>Comic Book and Graphic Novel</h3></div></Link>
+        <Link style={{ width:'400px',marginRight:'20px',textDecoration: 'none', color: 'rgb(30, 30, 30)' }} to="/products?category=Romantic Novel"><div className="cat cat3"><h3>Romantic Novel</h3></div></Link>
+        <Link style={{ width:'400px',marginRight:'20px',textDecoration: 'none', color: 'rgb(30, 30, 30)' }} to="/products?category=History"><div className="cat cat4"><h3>History</h3></div></Link>
+        <Link style={{width:'400px',marginRight:'20px', textDecoration: 'none', color: 'rgb(30, 30, 30)' }} to="/products?category=Detective and Mystery"><div className="cat cat5"><h3>Detective and Mystery</h3></div></Link>
+        <Link style={{ width:'400px',marginRight:'20px',textDecoration: 'none', color: 'rgb(30, 30, 30)' }} to="/products?category=Horrer"><div className="cat cat6"><h3>Horrer</h3></div></Link>
         </div>
         <div className='Headline'>
             <h2>
@@ -82,7 +93,7 @@ export const Shop = () => {
         <div className="category" id='cat' style={{height:'25vh'}}>
                 <div className='search-bar'>
                     <input autoFocus type="text" onKeyPress={(e)=>{if(e.key === 'Enter')searchLink.current.click()}} onChange={(e)=>{setKeyword(e.target.value)}}    placeholder='Search For Books'/>
-                    <a ref={searchLink} style={{ textDecoration: 'none', color: 'rgb(66, 66, 66)',display:'none' }} href={`/products/search?keyword=${keyword}`}>search</a>
+                    <Link ref={searchLink} style={{ textDecoration: 'none', color: 'rgb(66, 66, 66)',display:'none' }} to={`/products/search?keyword=${keyword}`}>search</Link>
                     <div><SearchIcon/></div>
                 </div>
         </div>
@@ -94,10 +105,10 @@ export const Shop = () => {
         <div className="category">
         <div className="product-slider">
                     <Slider {...settings}>
-                    {allProducts.products?.map((item) => {
+                    {allProducts.products?.slice(allProducts.products.length-8,allProducts.products.length).map((item) => {
                             return (
                                 <div >
-                                    <Card  key={item._id}  {...item}/>
+                                    <Card   key={item._id} {...item}  />
                                 </div>
                             )
                         })}
@@ -113,7 +124,7 @@ export const Shop = () => {
         <div className="category">
         <div className="product-slider">
                     <Slider {...settings} {...settings1}>
-                    {allProducts.products?.map((item) => {
+                    {allProducts.products?.slice(5,12).map((item) => {
                             return (
                                 <div >
                                     <Card  key={item._id}  {...item}/>
@@ -132,7 +143,7 @@ export const Shop = () => {
         <div className="category">
         <div className="product-slider">
                     <Slider {...settings} {...settings1}>
-                                      {allProducts.products?.map((item) => {
+                    {allProducts.products?.filter((item => item.featured)).map((item) => {
                             return (
                                 <div >
                                     <Card  key={item._id}  {...item}/>

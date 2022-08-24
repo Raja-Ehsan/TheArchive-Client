@@ -5,14 +5,23 @@ import Heading from "../components/heading";
 import Card from "../components/card";
 import { Subscribe } from "../components/subscribe";
 import { useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { setProducts } from "../redux/actions/productActions";
 function Products(props) {
     const allProducts = useSelector((state) => state.reducers.allProducts);
     const { search } = useLocation();
     const query = new URLSearchParams(search);
     const keyword = query.get('category');
-    console.log(allProducts.products[2].category)
-    console.log(keyword)
+    const dispatch = useDispatch();
+    useEffect(() => {
+        !allProducts.products.length && fetch('http://localhost:1000/book/get')
+             .then(res => res.json()).
+             then(res => {
+                 dispatch(setProducts(res))
+             })
+     }, [allProducts.products ])
+
     return (
         <div className="page-sizing">
             <Nav />

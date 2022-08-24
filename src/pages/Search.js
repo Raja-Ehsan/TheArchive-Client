@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../css/Search.css'
 import "../css/Products.css"
 import Nav from '../components/nav'
@@ -7,13 +7,23 @@ import { Subscribe } from '../components/subscribe'
 import Heading from '../components/heading'
 import Card from '../components/card'
 import { useLocation } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setProducts } from '../redux/actions/productActions'
 
 export const Search = () => {
     const allProducts = useSelector((state) => state.reducers.allProducts);
     const { search } = useLocation();
     const query = new URLSearchParams(search);
     const keyword = query.get('keyword');
+    const dispatch = useDispatch();
+    useEffect(() => {
+        !allProducts.products.length && fetch('http://localhost:1000/book/get')
+             .then(res => res.json()).
+             then(res => {
+                 dispatch(setProducts(res))
+             })
+     }, [allProducts.products ])
+
     return (
         <div style={{ backgroundColor: 'rgb(233, 233, 233)', height: '100%', padding: '0.1px' }}>
             <Nav />

@@ -3,11 +3,12 @@ import Nav from "../components/nav";
 import Footer from "../components/footer";
 import Heading from "../components/heading";
 import { React } from "react";
+import { Link } from "react-router-dom";
 
 function About() {
 
     return (
-        <div className="page-sizing" style={{padding:'1px 0 0 0',backgroundImage:`url(${require('../images/cover.jpg')})`,height:'130vh'}}>
+        <div className="page-sizing" style={{padding:'.1px',backgroundImage:`url(${require('../images/cover.jpg')})`,height:'100vh'}}>
             <Nav about={true}/>
             <div className="about-container">
                 <Heading item='About Us' />
@@ -19,7 +20,7 @@ function About() {
                     Illum, consequuntur itaque optio eligendi, esse maiores nihil obcaecati numquam eum et nemo reprehenderit perspiciatis saepe? Nesciunt atque, sed vero,<br/> laudantium, numquam sit odit quae quaerat modi laborum delectus earum.
                     Quibusdam explicabo facilis sint doloribus excepturi, facere suscipit iusto nulla vel quaerat exercitationem repudiandae dignissimos quos esse fuga ab dolorem velit quae. Et numquam commodi sed illum illo sequi dolor.
                     Vel eligendi debitis itaque illo consequuntur repellendus tenetur aliquam, explicabo, dicta accusamus veritatis odio doloribus impedit quisquam quaerat, nesciunt animi ullam! Ducimus, impedit qui dolores quasi reiciendis explicabo sapiente distinctio.
-                    <div style={{display:'flex',justifyContent:'center',alignItems:'center',height:'100px',fontSize:'20px',fontWeight:'600'}}> Click Here to Shop Now<a href="/register" style={{textDecoration:'none'}}><button className="butt" style={{width:'100px'}}>Shop</button></a></div>
+                    <div style={{display:'flex',justifyContent:'center',alignItems:'center',height:'100px',fontSize:'24px',fontWeight:'600'}}> Click Here to Shop Now<Link to="/" style={{textDecoration:'none'}}><button className="butt" style={{width:'100px',fontSize:'22px'}}>Shop</button></Link></div>
                 </div>
             </div>
             <Footer />

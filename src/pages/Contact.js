@@ -5,7 +5,7 @@ import Footer from "../components/footer";
 function Contact() {
     return (
         <div className="page-sizing" >
-            <Nav />
+            <Nav contact={true} />
             <div className="search-container">
                 <Heading item="Contact-Us" />
                 <div className="contact-container">

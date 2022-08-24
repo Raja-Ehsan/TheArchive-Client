@@ -7,9 +7,15 @@
     align-items: center;
     color: rgb(137, 137, 137);
     flex-direction: column;
-    border-top: 2px solid rgb(148, 148, 148);
+    border-top: 2px solid rgb(65, 65, 65);
     position: sticky;
     top: 100%;
+}
+
+.footer>.social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer-options {
@@ -18,12 +24,12 @@
 }
 
 .footer-opt {
-    margin: 10px;
     color: rgb(137, 137, 137);
 }
 
 .footer span {
     cursor: pointer;
+    margin: 5px;
 }
 
 @media only screen and (max-width: 850px) {
