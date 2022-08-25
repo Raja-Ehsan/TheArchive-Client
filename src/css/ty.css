@@ -1,0 +1,33 @@
+.ty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.thanks{
+    background-color: rgb(0, 0, 89);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    flex-direction: column;
+    color: whitesmoke;
+    box-shadow: 2px 2px 10px black;
+}
+.thanks>h1{
+    color: rgb(216, 216, 216);
+}
+.thanks>h2{
+    color: rgb(102, 102, 102);
+}
+.thanks>h3{
+    color: rgb(170, 179, 0);
+}
+.thanks>input{
+    width: 90%;
+    height: 35px;
+    border-radius: 8px;
+    border: none;
+    text-align: center;
+}

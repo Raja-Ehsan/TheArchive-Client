@@ -17,6 +17,8 @@ import { Shop } from "./pages/Shop";
 import { Search } from "./pages/Search";
 import { useSelector } from "react-redux";
 import { Restricted } from "./pages/Restricted";
+import { Ty } from "./pages/ty";
+import { Tracking } from "./pages/tracking";
 function App() {
   const currentUser=useSelector((state)=>state.reducers.currentUser);
   return (
@@ -33,6 +35,8 @@ function App() {
         <Route path='/cart' exact element={<Cart/>}/>
         <Route path='/shop' exact element={<Shop/>}/>
         <Route path='/checkout' exact element={<Checkout/>}/>
+        <Route path='/track' exact element={<Tracking/>}/>
+        <Route path='/ty' exact element={<Ty/>}/>
         <Route path='/admin' exact element={currentUser?.userRole==='Admin'?<AdminHome/>:<Restricted/>}/>
         <Route path='/admin/order' exact element={currentUser?.userRole==='Admin'?<Adminpending/>:<Restricted/>}/>
         <Route path='/admin/users' exact element={currentUser?.userRole==='Admin'?<Adminusers/>:<Restricted/>}/>

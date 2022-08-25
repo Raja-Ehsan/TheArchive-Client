@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useRef } from "react"
 import { useNavigate } from "react-router-dom";
 export default function Register() {
 
+    const enter=useRef();
     const navigate = useNavigate();
     const [formdata, setformdata] = React.useState({
         user: "", password: "", confirmpassword: "",relationship:'married'
@@ -149,7 +150,7 @@ export default function Register() {
                 <div className="input-container">
                     <div style={{ flex: "50%" }}>
                         <label className="labels" htmlFor="username">Username: </label> <br />
-                        <input type="text" className="fieldss"
+                        <input autoFocus={true} onKeyPress={(e) => { if (e.key === 'Enter') enter.current.click();   }}  type="text" className="fieldss"
                             id='username'
                             name='user'
                             value={formdata.user}
@@ -157,7 +158,7 @@ export default function Register() {
                     </div>
                     <div style={{ flex: "50%" }}>
                         <label className="labels" htmlFor="email">Email: </label> <br />
-                        <input type="email" className="fieldss"
+                        <input onKeyPress={(e) => { if (e.key === 'Enter') enter.current.click();   }} type="email" className="fieldss"
                             id='email'
                             name='email'
                             value={formdata.email}
@@ -172,7 +173,7 @@ export default function Register() {
                 <div className="input-container">
                     <div style={{ flex: "50%" }}>
                         <label className="labels" htmlFor="password">Password: </label> <br />
-                        <input type="password" className="fieldss"
+                        <input onKeyPress={(e) => { if (e.key === 'Enter') enter.current.click();   }} type="password" className="fieldss"
                             id='password'
                             name='password'
                             value={formdata.password}
@@ -180,7 +181,7 @@ export default function Register() {
                     </div>
                     <div style={{ flex: "50%" }}>
                         <label className="labels" htmlFor="confirm password">Confirm Password: </label> <br />
-                        <input type="password" className="fieldss"
+                        <input onKeyPress={(e) => { if (e.key === 'Enter') enter.current.click();   }} type="password" className="fieldss"
                             id='confirm-password'
                             name='confirmpassword'
                             value={formdata.confirmpassword}
@@ -192,7 +193,7 @@ export default function Register() {
                 <div className="input-3-container">
                     <div style={{ flex: "3" }}>
                         <label className="labels" htmlFor="city">City: </label> <br />
-                        <input type="text" className="fieldss"
+                        <input onKeyPress={(e) => { if (e.key === 'Enter') enter.current.click();   }} type="text" className="fieldss"
                             id='city'
                             name='city'
                             value={formdata.city}
@@ -201,7 +202,7 @@ export default function Register() {
                 
                     <div style={{ flex: "3" }}>
                         <label className="labels" htmlFor="province">Province: </label> <br />
-                        <input type="text" className="fieldss"
+                        <input onKeyPress={(e) => { if (e.key === 'Enter') enter.current.click();   }} type="text" className="fieldss"
                             id='province'
                             name='province'
                             value={formdata.province}
@@ -213,7 +214,7 @@ export default function Register() {
                 {alreadyExists.state ? <p style={alreadyExists.style} className="error"> <small style={alreadyExists.style}>Username Already Exists</small> </p> : ""}
                 {checkError.state ? <p style={alreadyExists.style} className="error"> <small style={alreadyExists.style}>Input is invalid [special characters and numbers are not allowed in input] </small> </p> : ""}
                 <a className="signup" href="/">Login</a>
-                {!matchError.state ? <button className="register-button" onClick={!matchError.state ? () => { handleSubmit() } : () => { }} >Register</button> : <button className="register-button" disabled >Register</button>}
+                {!matchError.state ? <button ref={enter} className="register-button" onClick={!matchError.state ? () => { handleSubmit() } : () => { }} >Register</button> : <button className="register-button" disabled >Register</button>}
             </div>
         </div>
 

@@ -32,7 +32,7 @@ export const Checkout = () => {
         }).then((res) => {
             return res.json()
         }).then((res) => {
-            navigate('/')
+            navigate(`/ty?tracking=${res.id}`);
         })
     }
     console.log(formdata)

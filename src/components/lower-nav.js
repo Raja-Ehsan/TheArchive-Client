@@ -13,7 +13,7 @@ function Lower() {
             <div className="optionss">
             <Link  style={{textDecoration:'none'}} to="/"><HomeIcon fontSize="large" className="opts" htmlColor="rgb(140, 140, 140)"   /></Link>
             <Link  style={{textDecoration:'none'}} to="/shop"><StoreIcon fontSize="large" className="opts" htmlColor="rgb(140, 140, 140)"/></Link>
-            <Link  style={{textDecoration:'none'}} to="/"><LocationSearchingIcon fontSize="large" className="opts" htmlColor="rgb(140, 140, 140)"   /></Link>
+            <Link  style={{textDecoration:'none'}} to="/track"><LocationSearchingIcon fontSize="large" className="opts" htmlColor="rgb(140, 140, 140)"   /></Link>
             <Link  style={{textDecoration:'none'}} to="/about"><InfoIcon fontSize="large" className="opts" htmlColor="rgb(140, 140, 140)"   /></Link>
             <Link  style={{textDecoration:'none'}} to="/contact-us"><ContactMailIcon fontSize="large" className="opts" htmlColor="rgb(140, 140, 140)"   /></Link>
             </div>

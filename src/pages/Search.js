@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/Search.css'
 import "../css/Products.css"
 import Nav from '../components/nav'
@@ -16,6 +16,7 @@ export const Search = () => {
     const query = new URLSearchParams(search);
     const keyword = query.get('keyword');
     const dispatch = useDispatch();
+    const [sort, setSort] = useState("low");
     useEffect(() => {
         !allProducts.products.length && fetch('http://localhost:1000/book/get')
              .then(res => res.json()).
@@ -35,13 +36,18 @@ export const Search = () => {
                 <div className="all-products-container">
                     <div >
                         <label htmlFor="sort">Sort-By</label>
-                        <select>
-                            <option>Price : low to high</option>
-                            <option>Price : high to low</option>
+                        <select onChange={(e) => { setSort(e.target.value) }}>
+                            <option value="low">Price : low to high</option>
+                            <option value="high">Price : high to low</option>
                         </select>
                     </div>
                     <div className="products">
-                    {allProducts?.products.filter((item=>item.bookName.match(new RegExp(keyword, "i")))).map((item)=>{
+                    {allProducts?.products.filter((item=>item.bookName.match(new RegExp(keyword, "i")))).sort((a, b) => {
+                            if (sort === 'low') 
+                            return a.bookPrice - b.bookPrice
+                            else
+                                return b.bookPrice - a.bookPrice
+                        }).map((item)=>{
                             return(
                                 <div >
                             <Card {...item} key={item._id}/>

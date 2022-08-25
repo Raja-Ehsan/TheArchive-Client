@@ -29,6 +29,7 @@ function User(props) {
                     </div>
                     <AccountCircleIcon className="icons" />
                     {currentUser.userName ? <h4 className="button" onClick={() => {
+                        if(window.confirm("By clicking 'Ok' you will Logout"))
                         dispatch(logout());
                     }}>Logout</h4> : <><Link style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} to="/register"><h4 className="button">Register</h4></Link>
                         <Link style={{ textDecoration: 'none', color: 'rgb(30, 30, 30)' }} to="/login"> <h4 className="button">Login</h4></Link></>}
@@ -38,7 +39,7 @@ function User(props) {
                 <div className="options">
                     {props.home ? <Link style={{ textDecoration: 'none', color: 'grey' }} to="/"><h4 className="opt">Home</h4></Link> : <Link style={{ textDecoration: 'none', color: 'rgb(228, 228, 228)' }} to="/"><h4 className="opt">Home</h4></Link>}
                     {props.shop ? <Link style={{ textDecoration: 'none', color: 'grey' }} to="/shop"><h4 className="opt">Shop</h4></Link> : <Link style={{ textDecoration: 'none', color: 'rgb(228, 228, 228)' }} to="/shop"><h4 className="opt">Shop</h4></Link>}
-                    {props.tracking ? <Link style={{ textDecoration: 'none', color: 'grey' }} to="/"><h4 className="opt">Tracking</h4></Link> : <Link style={{ textDecoration: 'none', color: 'rgb(228, 228, 228)' }} to="/"><h4 className="opt">Tracking</h4></Link>}
+                    {props.tracking ? <Link style={{ textDecoration: 'none', color: 'grey' }} to="/track"><h4 className="opt">Tracking</h4></Link> : <Link style={{ textDecoration: 'none', color: 'rgb(228, 228, 228)' }} to="/track"><h4 className="opt">Tracking</h4></Link>}
                     {props.contact ? <Link style={{ textDecoration: 'none', color: 'grey' }} to="/contact-us"><h4 className="opt">Contact-Us</h4></Link> : <Link style={{ textDecoration: 'none', color: 'rgb(228, 228, 228)' }} to="/contact-us"><h4 className="opt">Contact-Us</h4></Link>}
                     {props.about ? <Link style={{ textDecoration: 'none', color: 'grey' }} to="/about"><h4 className="opt">About</h4></Link> : <Link style={{ textDecoration: 'none', color: 'rgb(228, 228, 228)' }} to="/about"><h4 className="opt">About</h4></Link>}
                 </div>

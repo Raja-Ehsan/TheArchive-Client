@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../css/login.css"
@@ -6,6 +6,7 @@ import "../css/register.css"
 import { setCurrentUser } from "../redux/actions/userActions";
 export default function Login() {
     const dispatch = useDispatch(); 
+    const enter=useRef();
     const currentUser=useSelector((state)=>state.reducers.currentUser);
     const navigate = useNavigate();
     const [formdata, setformdata] = React.useState({
@@ -67,20 +68,20 @@ export default function Login() {
             <div className="login-form">
                 <h2 className="login-title">Login</h2>
                 <label className="labels" htmlFor="username">Username: </label> <br />
-                <input type="text" className="fields"
+                <input autoFocus={true}  onKeyPress={(e) => { if (e.key === 'Enter') enter.current.click();   }} type="text" className="fields"
                     id='username'
                     name='user'
                     value={FormData.user}
-                    onChange={handleChange}></input><br />
+                    onChange={handleChange} ></input><br />
                 <label className="labels" htmlFor="password">Password: </label> <br />
-                <input type="password" className="fields"
+                <input  onKeyPress={(e) => { if (e.key === 'Enter') enter.current.click();  }} type="password" className="fields"
                     id='password'
                     name='password'
                     value={FormData.username}
                     onChange={handleChange}></input> <br />
                 {identify.state ? <p className="error"> <small style={identify.style}>Email or Password is not correct</small> </p> : ""}
                 <a className="signup" href="/register">Signup</a>
-                <button className="login-button" onClick={handleSubmit} >Login</button>
+                <button className="login-button" ref={enter} onClick={handleSubmit} >Login</button>
             </div>
         </div>
 
